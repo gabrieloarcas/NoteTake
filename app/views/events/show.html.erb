@@ -1,0 +1,33 @@
+<div class="container container-show mb-5">
+  <div class="col-12 center" id="event_<%= @event.id %>">
+    <div class="container my-2">
+      <div class="d-flex justify-content-between my-2">
+        <div>
+          <span><%= better_time(@event.start) %> - 
+          <span><%= better_time(@event.finish) %></span>
+          <span><%= link_to @event.name, @event, class: "link" %></span>
+          <div style="color: grey">Description: <%= @event.description %></div>
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update-event_<%= @event.id %>">
+            Edit
+          </button>
+            <%= link_to 'Delete', @event, method: :delete, class: "btn btn-danger ", remote: true %>
+        </div>
+      </div>
+    </div>
+
+    <%= render @event.notes %>
+    <%= render 'notes/form'%>
+    <hr>
+  
+    <%= link_to 'Back to Events List', events_path, class: "m-2" %>
+  </div>
+</div>
+
+<%= render 'form', event: @event %>
+
+
+
+
+

@@ -1,0 +1,47 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "./variables";
+
+body {
+  line-height: 1.2;
+}
+
+.tr-height {
+  height: 10vw;
+  color: $white;
+}
+
+.simple-calendar {
+  .day {
+    border: 0.4vw solid $white;
+    width: 10vw;
+  }
+}
+
+.simple-calendar {
+  .day:hover {
+    background: $dark-red;
+  }
+}
+
+.calendar-heading {
+  width: 40%;
+  margin-top: 10px;
+}
+
+hr {
+  margin: 0;
+}
+
+.container-show {
+  margin-top: 10%;
+  border: solid 2px lightgrey;
+  border-radius: 5px;
+  padding: 10px 0;
+}
+
+.container-index {
+  margin-top: 5%;
+}

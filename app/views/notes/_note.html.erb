@@ -1,0 +1,10 @@
+<div class="border rounded p-2 m-1">
+  <p>
+    <strong><%= current_user.username %> </strong>
+    <%= note.note %>
+  </p>
+  <% if note.note %>
+  <%= link_to 'Delete', [note.event, note],
+  method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+$('#new-event').modal('hide');
+$('.event_name').val('');
+$('.event_description').val('');
+
+$('#container-events').prepend('<%= j render @event%>');
+$('#event_<%= @event.id %>').hide().fadeIn(1000);
+
+
+
