@@ -6,6 +6,8 @@ ruby '2.7.1'
 gem 'devise', '~> 4.7', '>= 4.7.2'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'simple_calendar', '~> 2.4', '>= 2.4.1'
+gem 'react-rails', '~> 2.6', '>= 2.6.1'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
