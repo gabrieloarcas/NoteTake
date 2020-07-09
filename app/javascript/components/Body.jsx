@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AllEvents from "./AllEvents";
 import NewEvent from "./NewEvent";
+import MyCalendar from "./MyCalendar";
 
 function Body() {
   const [events, setEvents] = useState([]);
@@ -93,6 +94,7 @@ function Body() {
   return (
     <div>
       <NewEvent handleFormSubmit={handleFormSubmit} />
+      <MyCalendar />
       <AllEvents
         events={events}
         handleDelete={handleDelete}

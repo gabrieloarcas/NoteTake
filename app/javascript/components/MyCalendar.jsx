@@ -16,14 +16,8 @@ function MyCalendar() {
       .then((data) => {
         let events = data;
         for (let i = 0; i < events.length; i++) {
-          events[i].start = moment
-            .utc(events[i].start)
-            // .add(1, "hours")
-            .toDate();
-          events[i].finish = moment
-            .utc(events[i].end)
-            // .add(1, "hours")
-            .toDate();
+          events[i].start = moment.utc(events[i].start).toDate();
+          events[i].finish = moment.utc(events[i].end).toDate();
         }
         setEvents(events);
       });
@@ -38,7 +32,9 @@ function MyCalendar() {
         <Calendar
           popup
           selectable
-          onSelectEvent={(event) => alert(event.name)}
+          onSelectEvent={(event) => {
+            window.location.href = `http://localhost:3000/events/${event.id}`;
+          }}
           events={events}
           titleAccessor="name"
           startAccessor="start"
