@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import Body from "./Body";
-import Event from "./Event";
 
-const Home = (props) => {
+const Home = () => {
   return (
-    <div>
-      <h1>Add an event to your calendar</h1>
+    <div className="container d-flex flex-column align-items-center">
+      <h4 className="mt-3 text-secondary">
+        Add an event to your calendar in React
+      </h4>
       <Body />
     </div>
   );

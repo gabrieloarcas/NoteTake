@@ -5,9 +5,6 @@ const AllEvents = (props) => {
   let events = props.events.map((event) => {
     return (
       <div key={event.id}>
-        <h1>{event.name}</h1>
-        <p>{event.description}</p>
-
         <Event
           event={event}
           handleDelete={props.handleDelete}
