@@ -2,7 +2,7 @@
   <div class="container">
     <div class="d-flex justify-content-between my-2">
       <div>
-        <span style="color: #3BB2D6;"><%= better_time(event.start) %></span>
+        <span style="color: #3BB2D6;"><%= event.start&.strftime('%B, %e, %Y') %></span>
         <span><%= link_to event.name, event, class: "link" %></span>
         <div class=""><%= event.description %></div>
       </div>

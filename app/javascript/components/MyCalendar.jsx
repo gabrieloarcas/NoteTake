@@ -1,53 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);
 
-function MyCalendar() {
+const MyCalendar = () => {
   const [events, setEvents] = useState([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetch("/api/v1/events.json")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        let events = data;
+        let ev = data;
         for (let i = 0; i < events.length; i++) {
-          events[i].start = moment
-            .utc(events[i].start)
-            // .add(1, "hours")
-            .toDate();
-          events[i].finish = moment
-            .utc(events[i].end)
-            // .add(1, "hours")
-            .toDate();
+          ev[i].start = moment(ev[i].start).toDate();
+          ev[i].finish = moment(ev[i].end).toDate();
         }
-        setEvents(events);
+        setEvents(ev);
       });
   }, []);
 
   // const now = new Date();
-
   return (
-    <div>
-      <p>Calendar in React.</p>
-      <div style={{ height: "500pt" }}>
+    <>
+      <div style={{ height: "80vh" }}>
         <Calendar
-          popup
           selectable
-          onSelectEvent={(event) => alert(event.name)}
+          onSelectEvent={(event) => {
+            window.location.href = `http://localhost:3000/events/${event.id}`;
+          }}
           events={events}
           titleAccessor="name"
           startAccessor="start"
           endAccessor="finish"
-          defaultDate={moment().toDate()}
+          defaultDate={new Date()}
           localizer={localizer}
+          views={["month"]}
+          defaultView="month"
         />
       </div>
-    </div>
+    </>
   );
-}
+};
 export default MyCalendar;

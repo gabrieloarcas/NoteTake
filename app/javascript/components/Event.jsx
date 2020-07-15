@@ -1,5 +1,6 @@
 // const { start } = require("turbolinks");
 import React, { useState } from "react";
+import moment from "moment";
 
 class Event extends React.Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class Event extends React.Component {
         defaultValue={this.props.event.name}
       />
     ) : (
-      <h3>{this.props.event.name}</h3>
+      <p>{this.props.event.name}</p>
     );
     let description = this.state.editable ? (
       <input
@@ -53,34 +54,45 @@ class Event extends React.Component {
     );
     let start = this.state.editable ? (
       <input
-        type="date"
+        type="text"
         ref={(input) => (this.start = input)}
-        defaultValue={this.props.event.start}
+        defaultValue={moment(this.props.event.start).format(
+          "YYYY MMMM Do, h:mm a"
+        )}
       />
     ) : (
-      <h3>{this.props.event.start}</h3>
+      <p>{moment(this.props.event.start).format("YYYY MMMM Do, h:mm a")}</p>
     );
     let finish = this.state.editable ? (
       <input
-        type="date"
+        type="text"
         ref={(input) => (this.finish = input)}
-        defaultValue={this.props.event.finish}
+        defaultValue={moment(this.props.event.finish).format(
+          "YYYY MMMM Do, h:mm a"
+        )}
       />
     ) : (
-      <p>{this.props.event.finish}</p>
+      <p>{moment(this.props.event.finish).format("YYYY MMMM Do, h:mm a")}</p>
     );
     return (
-      <div>
-        {name}
-        {description}
-        {start}
-        {finish}
-        <button onClick={() => this.handleEdit()}>
-          {this.state.editable ? "Submit" : "Edit"}
-        </button>
-        <button onClick={() => this.props.handleDelete(this.props.event.id)}>
-          Delete
-        </button>
+      <div className="">
+        <div className="row d-flex justify-content-between align-items-center">
+          {name}
+          {description}
+          {start}
+          {finish}
+          <div>
+            <button className="btn btn-light" onClick={() => this.handleEdit()}>
+              {this.state.editable ? "Submit" : "Edit"}
+            </button>
+            <button
+              className="btn btn-light"
+              onClick={() => this.props.handleDelete(this.props.event.id)}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
       </div>
     );
   }

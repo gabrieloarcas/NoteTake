@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import AllEvents from "./AllEvents";
 import NewEvent from "./NewEvent";
+import MyCalendar from "./MyCalendar";
 
-function Body() {
+const Body = () => {
   const [events, setEvents] = useState([]);
 
   const handleFormSubmit = (name, description, start, finish) => {
@@ -93,13 +94,17 @@ function Body() {
   return (
     <div>
       <NewEvent handleFormSubmit={handleFormSubmit} />
-      <AllEvents
-        events={events}
-        handleDelete={handleDelete}
-        handleUpdate={handleUpdate}
-      />
+      <MyCalendar />
+      <div className="my-5">
+        <p className="text-muted mb-3">Your events below:</p>
+        <AllEvents
+          events={events}
+          handleDelete={handleDelete}
+          handleUpdate={handleUpdate}
+        />
+      </div>
     </div>
   );
-}
+};
 
 export default Body;
