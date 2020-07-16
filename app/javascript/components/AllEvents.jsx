@@ -14,7 +14,13 @@ const AllEvents = (props) => {
     );
   });
 
-  return <div>{events}</div>;
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col d-flex flex-row scroll">{events}</div>
+      </div>
+    </div>
+  );
 };
 
 export default AllEvents;

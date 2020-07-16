@@ -49,3 +49,17 @@ hr {
 p {
   margin: 0;
 }
+
+.scroll {
+  overflow-x: scroll;
+  overflow-y: auto;
+  height: 250px;
+}
+
+.text-info-custom {
+  color: #3174ad;
+}
+
+.custom-description {
+  font-size: 1.4vh;
+}

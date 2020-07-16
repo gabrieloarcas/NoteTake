@@ -1,101 +1,93 @@
-// const { start } = require("turbolinks");
 import React, { useState } from "react";
 import moment from "moment";
 
-class Event extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editable: false,
-    };
-    this.handleEdit = this.handleEdit.bind(this);
-  }
+const Event = (props) => {
+  const [editable, setEditable] = useState(false);
 
-  handleEdit() {
-    if (this.state.editable) {
-      let name = this.name.value;
-      let description = this.description.value;
-      let start = this.start.value;
-      let finish = this.finish.value;
+  const timeFormat = (eventTime) => {
+    return moment(new Date(eventTime)).format("MM-DD, hh:mm A");
+  };
 
-      let id = this.props.event.id;
+  const handleEdit = () => {
+    if (editable) {
+      let id = props.event.id;
       let event = {
         id: id,
-        name: name,
-        description: description,
-        start: start,
-        finish: finish,
+        name: name.value,
+        description: description.value,
+        start: start.value,
+        finish: finish.value,
       };
-      this.props.handleUpdate(event);
+      props.handleUpdate(event);
     }
-    this.setState({
-      editable: !this.state.editable,
-    });
-  }
+    setEditable(!editable);
+  };
 
-  render() {
-    let name = this.state.editable ? (
-      <input
-        type="text"
-        ref={(input) => (this.name = input)}
-        defaultValue={this.props.event.name}
-      />
-    ) : (
-      <p>{this.props.event.name}</p>
-    );
-    let description = this.state.editable ? (
-      <input
-        type="text"
-        ref={(input) => (this.description = input)}
-        defaultValue={this.props.event.description}
-      />
-    ) : (
-      <p>{this.props.event.description}</p>
-    );
-    let start = this.state.editable ? (
-      <input
-        type="text"
-        ref={(input) => (this.start = input)}
-        defaultValue={moment(this.props.event.start).format(
-          "YYYY MMMM Do, h:mm a"
-        )}
-      />
-    ) : (
-      <p>{moment(this.props.event.start).format("YYYY MMMM Do, h:mm a")}</p>
-    );
-    let finish = this.state.editable ? (
-      <input
-        type="text"
-        ref={(input) => (this.finish = input)}
-        defaultValue={moment(this.props.event.finish).format(
-          "YYYY MMMM Do, h:mm a"
-        )}
-      />
-    ) : (
-      <p>{moment(this.props.event.finish).format("YYYY MMMM Do, h:mm a")}</p>
-    );
-    return (
-      <div className="">
-        <div className="row d-flex justify-content-between align-items-center">
-          {name}
-          {description}
-          {start}
-          {finish}
-          <div>
-            <button className="btn btn-light" onClick={() => this.handleEdit()}>
-              {this.state.editable ? "Submit" : "Edit"}
-            </button>
-            <button
-              className="btn btn-light"
-              onClick={() => this.props.handleDelete(this.props.event.id)}
-            >
-              Delete
-            </button>
-          </div>
+  let name = editable ? (
+    <input
+      className="form-control m-1"
+      type="text"
+      ref={(input) => (name = input)}
+      defaultValue={props.event.name}
+    />
+  ) : (
+    <p>{props.event.name}</p>
+  );
+  let description = editable ? (
+    <input
+      className="form-control m-1"
+      type="text"
+      ref={(input) => (description = input)}
+      defaultValue={props.event.description}
+    />
+  ) : (
+    <p className="custom-description">{props.event.description}</p>
+  );
+  let start = editable ? (
+    <input
+      className="form-control m-1"
+      type="text"
+      ref={(input) => (start = input)}
+      defaultValue={timeFormat(props.event.start)}
+    />
+  ) : (
+    <small>{timeFormat(props.event.start)}</small>
+  );
+  let finish = editable ? (
+    <input
+      className="form-control m-1"
+      type="text"
+      ref={(input) => (finish = input)}
+      defaultValue={timeFormat(props.event.finish)}
+    />
+  ) : (
+    <small>{timeFormat(props.event.finish)}</small>
+  );
+  return (
+    <div className="card m-1 shadow-sm" style={{ width: "17.1rem" }}>
+      <div className="card-body">
+        <h5 className="card-title text-info-custom">{name}</h5>
+        <span className="card-text">
+          {start} {finish}
+        </span>
+        <span className="card-text">{description}</span>
+
+        {/* <span className="card-text">{finish}</span> */}
+
+        <div>
+          <button className="btn btn-light mt-2" onClick={() => handleEdit()}>
+            {editable ? "Submit" : "Edit"}
+          </button>
+          <button
+            className="btn btn-light mt-2"
+            onClick={() => props.handleDelete(props.event.id)}
+          >
+            Delete
+          </button>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Event;
