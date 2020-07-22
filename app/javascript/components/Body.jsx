@@ -37,7 +37,8 @@ const Body = () => {
   };
 
   const addNewEvent = (event) => {
-    setEvents(events.concat(event));
+    // setEvents(events.concat(event));
+    setEvents([...events, event]);
   };
 
   const handleDelete = (id) => {
@@ -56,8 +57,8 @@ const Body = () => {
   };
 
   const deleteEvent = (id) => {
-    let refreshEvents = events.filter((event) => event.id !== id);
-    setEvents(refreshEvents);
+    let untouchedEvents = events.filter((event) => event.id !== id);
+    setEvents(untouchedEvents);
   };
 
   const handleUpdate = (event) => {
@@ -70,15 +71,15 @@ const Body = () => {
         "X-Requested-With": "XMLHttpRequest",
         "X-CSRF-Token": token,
       },
-    }).then((response) => {
+    }).then(() => {
       updateEvent(event);
     });
   };
 
   const updateEvent = (event) => {
-    let newEvents = events.filter((f) => f.id !== event.id);
-    newEvents.push(event);
-    setEvents(newEvents);
+    let updatedEvents = events.filter((f) => f.id !== event.id);
+    updatedEvents.push(event);
+    setEvents(updatedEvents);
   };
 
   useEffect(() => {

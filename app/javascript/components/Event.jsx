@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import moment from "moment";
 
 const Event = (props) => {
-  const [editable, setEditable] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   const timeFormat = (eventTime) => {
     return moment(new Date(eventTime)).format("MM-DD, hh:mm A");
   };
 
   const handleEdit = () => {
-    if (editable) {
+    if (edit) {
       let id = props.event.id;
       let event = {
         id: id,
@@ -20,10 +20,10 @@ const Event = (props) => {
       };
       props.handleUpdate(event);
     }
-    setEditable(!editable);
+    setEdit(!edit);
   };
 
-  let name = editable ? (
+  let name = edit ? (
     <input
       className="form-control m-1"
       type="text"
@@ -33,7 +33,7 @@ const Event = (props) => {
   ) : (
     <p>{props.event.name}</p>
   );
-  let description = editable ? (
+  let description = edit ? (
     <input
       className="form-control m-1"
       type="text"
@@ -43,7 +43,7 @@ const Event = (props) => {
   ) : (
     <p className="custom-description">{props.event.description}</p>
   );
-  let start = editable ? (
+  let start = edit ? (
     <input
       className="form-control m-1"
       type="text"
@@ -53,7 +53,7 @@ const Event = (props) => {
   ) : (
     <small>{timeFormat(props.event.start)}</small>
   );
-  let finish = editable ? (
+  let finish = edit ? (
     <input
       className="form-control m-1"
       type="text"
@@ -76,7 +76,7 @@ const Event = (props) => {
 
         <div>
           <button className="btn btn-light mt-2" onClick={() => handleEdit()}>
-            {editable ? "Submit" : "Edit"}
+            {edit ? "Submit" : "Edit"}
           </button>
           <button
             className="btn btn-light mt-2"

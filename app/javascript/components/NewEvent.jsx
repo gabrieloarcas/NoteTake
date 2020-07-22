@@ -1,13 +1,13 @@
 import React from "react";
 
-const NewEvent = (props) => {
+const NewEvent = ({ handleFormSubmit }) => {
   let formFields = {};
 
   return (
     <form
       className="form-inline p-3"
       onSubmit={(e) => {
-        props.handleFormSubmit(
+        handleFormSubmit(
           formFields.name.value,
           formFields.description.value,
           formFields.start.value,

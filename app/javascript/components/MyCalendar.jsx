@@ -8,7 +8,7 @@ const localizer = momentLocalizer(moment);
 const MyCalendar = () => {
   const [events, setEvents] = useState([]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     fetch("/api/v1/events.json")
       .then((response) => {
         return response.json();

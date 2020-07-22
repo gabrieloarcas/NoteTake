@@ -1,23 +1,23 @@
 import React from "react";
 import Event from "./Event";
 
-const AllEvents = (props) => {
-  let events = props.events.map((event) => {
-    return (
-      <div key={event.id}>
-        <Event
-          event={event}
-          handleDelete={props.handleDelete}
-          handleUpdate={props.handleUpdate}
-        />
-      </div>
-    );
-  });
-
+const AllEvents = ({ events, handleDelete, handleUpdate }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col d-flex flex-row scroll">{events}</div>
+        <div className="col d-flex flex-row scroll">
+          {events.map((event) => {
+            return (
+              <div key={event.id}>
+                <Event
+                  event={event}
+                  handleDelete={handleDelete}
+                  handleUpdate={handleUpdate}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
