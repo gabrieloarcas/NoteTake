@@ -6,6 +6,7 @@
 
 body {
   line-height: 1.2;
+  background-color: rgb(252, 252, 252);
 }
 
 .tr-height {
@@ -36,10 +37,11 @@ hr {
 }
 
 .container-show {
-  margin-top: 10%;
-  border: solid 2px lightgrey;
+  margin-top: 5%;
+  border: solid 1px rgb(238, 237, 237);
   border-radius: 5px;
   padding: 10px 0;
+  background-color: rgb(255, 255, 255);
 }
 
 .container-index {
@@ -62,4 +64,22 @@ p {
 
 .custom-description {
   font-size: 1.8vh;
+  margin-top: 4px;
+}
+
+.text-muted-custom {
+  font-size: 2vh;
+}
+
+.small-text {
+  font-size: 1.5vh;
+}
+
+a {
+  color: rgb(3, 84, 109);
+}
+
+a:hover {
+  text-decoration: none;
+  color: rgb(219, 101, 4);
 }

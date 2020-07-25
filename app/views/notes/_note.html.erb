@@ -1,9 +1,11 @@
-<div class="border rounded p-2 m-1">
-  <p>
+<div class="p-2 m-1 ml-5 shadow-sm">
+  <div>
     <strong><%= current_user.username %> </strong>
-    <%= note.note %>
-  </p>
+    <span class="text-muted font-italic small-text"><%= Category.find(note.category_id).name %> event</span>
+    <p><%= note.note %></p>
+  </div>
   <% if note.note %>
+  <%= link_to 'Edit', edit_event_note_path(@event, note) %>
   <%= link_to 'Delete', [note.event, note],
   method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
   <% end %>
