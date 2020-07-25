@@ -4,7 +4,7 @@
       <div>
         <span style="color: #3BB2D6;"><%= event.start&.strftime('%B, %e, %Y') %></span>
         <span><%= link_to event.name, event, class: "link" %></span>
-        <div class=""><%= event.description %></div>
+        <div style="color: grey"><%= event.description %></div>
       </div>
       <div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update-event_<%= event.id %>">

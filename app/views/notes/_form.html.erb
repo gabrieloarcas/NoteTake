@@ -1,9 +1,7 @@
-<div>
-  <%= form_for ([@event, @event.notes.build]) do |f| %>
-    <div class="field">
-        <strong><%= f.label "Add your note here:" %></strong></div>
-        <%= f.rich_text_area :note, placeholder: "Your note here" %>
-        <%= f.submit 'Submit', :class => 'btn btn-primary my-2' %>
-    </div> 
+<div class="container border rounded p-2">
+  <%= form_for ([@event, @note]) do |f| %>
+    <div class="p-2"><%= f.collection_select :category_id, Category.all, :id, :name %> event</div>
+    <%= f.rich_text_area :note, placeholder: "Your note here" %>
+    <div class="ml-2 mt-2"><%= f.submit 'Submit', :class => 'btn btn-primary my-2' %></div>
   <% end %> 
 </div>
