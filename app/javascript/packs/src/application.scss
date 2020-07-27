@@ -1,2 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
-@import "./layouts.scss";
+@import "./variables";
+@import "./general.scss"; //general settings applied to everything
+@import "./objects.scss"; //containers, wrappers etc
+@import "./components.scss"; //UI elements

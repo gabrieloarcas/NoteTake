@@ -3,14 +3,15 @@ class NotesController < ApplicationController
   before_action :set_event
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
-  def new
-    @note =  @event.notes.build
-    @categories = Category.all.map{|c| [ c.name, c.id ] }
-  end
+  # def new
+  #   @note =  @event.notes.build
+  #   @categories = Category.all.map{|c| [ c.name, c.id ] }
+  # end
 
   def create
     @event = Event.find(params[:event_id])
-    @note = @event.notes.create(params[:note].permit(:note, :event_id, :category_id))
+    # @note = @event.notes.create(params[:note].permit(:note, :event_id, :category_id))
+    @note = @event.notes.create(note_params.merge(user_id: current_user.id))
     @note.user_id = current_user.id
     @note.category_id = params[:category_id]
 

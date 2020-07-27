@@ -6,7 +6,7 @@ class Api::V1::EventsController < ApplicationController
 
   def index 
     if user_signed_in?
-      render json: current_user.events()
+      render json: Event.all
     else
       render json: {}, status: 401
     end 
@@ -24,11 +24,6 @@ class Api::V1::EventsController < ApplicationController
       render json: {}, status: 401
     end
   end
-
-  # def create
-  #   event = Event.create(event_params)
-  #   render json: event
-  # end
 
   def update
     event = Event.find(params[:id])

@@ -97,7 +97,7 @@ const Body = () => {
       <NewEvent handleFormSubmit={handleFormSubmit} />
       <MyCalendar />
       <div className="my-5">
-        <p className="text-muted mb-3">Your events below:</p>
+        <p className="text-muted mb-3">All events:</p>
         <AllEvents
           events={events}
           handleDelete={handleDelete}
