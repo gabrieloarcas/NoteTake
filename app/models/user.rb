@@ -5,6 +5,7 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable
   
   has_many :events, dependent: :destroy
+  has_many :notes, dependent: :destroy
 
   def username
     return email.split("@")[0].capitalize

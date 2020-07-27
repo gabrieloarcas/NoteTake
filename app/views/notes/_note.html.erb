@@ -1,6 +1,6 @@
 <div class="p-2 m-1 ml-5 shadow-sm">
   <div>
-    <strong><%= current_user.username %> </strong>
+    <strong><%=  note.user.username %> </strong>
     <span class="text-muted font-italic small-text"><%= Category.find(note.category_id).name %> event</span>
     <p><%= note.note %></p>
   </div>

@@ -1,12 +1,9 @@
-
-
-<hr>
 <%= month_calendar events: @events do |date, events| %>
-  <%= date %>
+  <div class="date-color"><%= date %> </div>
 
   <% events.each do |event| %>
-    <div>
-      <%= event.start.strftime("%I:%M %p")%>
+    <div class="mt-2">
+      <span class="hour-color"><%= event.start.strftime("%I:%M %p")%></span>
       <%= link_to event.name, event, class: "link" %>
       <%= event.description %>
     </div>

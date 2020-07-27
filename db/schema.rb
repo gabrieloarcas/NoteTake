@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 2020_07_25_132128) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.string "category_id"
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_notes_on_author_id"
     t.index ["event_id"], name: "index_notes_on_event_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end

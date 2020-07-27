@@ -6,7 +6,7 @@
     <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: "btn btn-dark my-4", id: "next-month" %>
   </div>
 
-  <table class="table table-dark table-bordered mx-auto" style="width: 90%;">
+  <table class="table table-color table-bordered mx-auto" style="width: 90%;">
     <thead>
       <tr style="text-align: center">
         <% date_range.slice(0, 7).each do |day| %>
